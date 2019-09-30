@@ -13,6 +13,9 @@ const theme = {
     primaryLight: 'rgb(188, 217, 234)',
     secondary: 'rgb(195,119,224)',
     lightgrey: 'rgb(250, 248, 248)',
+    white: '#fff',
+    black: 'rgb(31, 19, 19)',
+    darkgrey: 'rgb(109, 109, 109)',
   },
 };
 

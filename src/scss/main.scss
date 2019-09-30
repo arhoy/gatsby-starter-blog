@@ -1,3 +1,9 @@
 @import 'abstracts/mixins';
 @import 'abstracts/variables';
 @import 'base/base';
+
+.post {
+  &__p {
+    margin: 2rem 0rem;
+  }
+}

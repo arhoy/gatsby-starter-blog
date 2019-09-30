@@ -30,20 +30,23 @@ module.exports = {
             family: `Mansalva`,
             subsets: [`latin`],
           },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
         ],
       },
     },
     {
-        resolve: `gatsby-plugin-mdx`,
-        options: {
-          defaultLayouts: {
-            default: require.resolve("./src/components/Layout/layout.js"),
-          },
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve('./src/components/layouts/Layout.js'),
         },
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
   ],
 };
