@@ -7,6 +7,7 @@ const Navlink = styled(Link)`
   font-size: 1.8rem;
   text-decoration: none;
   margin-right: 1rem;
+
   &:hover {
     color: ${props => props.theme.colors.primaryDark};
     font-weight: bolder;
@@ -20,7 +21,9 @@ const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2.5rem;
+  padding: 2rem 2.5rem;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
 `;
 
 const Logo = styled.span`

@@ -2,9 +2,11 @@ import React from 'react';
 import { Global, css } from '@emotion/core';
 import Nav from './Nav';
 import { ThemeProvider } from 'emotion-theming';
+import styled from '@emotion/styled';
 
 // real global scss styles
 import '../../scss/main.scss';
+import Footer from './Footer';
 
 const theme = {
   colors: {
@@ -19,6 +21,29 @@ const theme = {
   },
 };
 
+const Div = styled.div`
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr
+    [center-start] repeat(8, [col-start] minmax(min-content, 1fr) [col-end])
+    [center-end] 1fr [full-end];
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+`;
+
+const NavLayout = styled.header`
+  grid-column: center-start/center-end;
+`;
+
+const Main = styled.main`
+  margin-top: 3rem;
+  grid-column: center-start/center-end;
+`;
+
+const FooterLayout = styled.footer`
+  grid-column: center-start/center-end;
+`;
+
 const Layout = ({ children }) => {
   const white = '#fff';
   const red = 'rgba(138, 35, 12,0.7)';
@@ -31,6 +56,7 @@ const Layout = ({ children }) => {
             box-sizing: border-box;
             margin: 0;
           }
+
           body {
             background: ${white};
             margin: 0;
@@ -45,17 +71,15 @@ const Layout = ({ children }) => {
       />
 
       <ThemeProvider theme={theme}>
-        <header>
-          <Nav />
-        </header>
-
-        <main
-          css={css`
-            margin: 2rem;
-          `}
-        >
-          {children}
-        </main>
+        <Div>
+          <NavLayout>
+            <Nav />
+          </NavLayout>
+          <Main>{children}</Main>
+          <FooterLayout>
+            <Footer />
+          </FooterLayout>
+        </Div>
       </ThemeProvider>
     </>
   );
