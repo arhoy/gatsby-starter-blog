@@ -34,19 +34,30 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           default: require.resolve('./src/components/layouts/Layout.js'),
         },
+        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
+        plugins: [{ resolve: 'gatsby-remark-images' }],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/posts`,
+        path: `posts`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `images`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import NoStyleLink from '../Links/NoStyleLink';
+import Image from 'gatsby-image';
 
 const Div = styled.div`
   border-left: 4px solid ${props => props.theme.colors.black};
@@ -24,6 +25,10 @@ const Div = styled.div`
   }
 `;
 
+const ImageContainer = styled(Image)`
+  width: 10rem;
+`;
+
 const Post = ({ post }) => {
   return (
     <Div>
@@ -31,6 +36,7 @@ const Post = ({ post }) => {
         <h2>{post.title}</h2>
         <p className="content">{post.excerpt}</p>
         <p className="author">By {post.author}</p>
+        <ImageContainer fluid={post.mainImage.sharp.fluid} alt={post.title} />
       </NoStyleLink>
     </Div>
   );

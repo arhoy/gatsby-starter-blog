@@ -7,8 +7,15 @@ const usePosts = () => {
         nodes {
           frontmatter {
             title
-            slug
             author
+            slug
+            mainImage {
+              sharp: childImageSharp {
+                fluid(maxWidth: 100, maxHeight: 100) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
           excerpt
         }
@@ -20,6 +27,7 @@ const usePosts = () => {
     title: post.frontmatter.title,
     slug: post.frontmatter.slug,
     author: post.frontmatter.author,
+    mainImage: post.frontmatter.mainImage,
     excerpt: post.excerpt,
   }));
 };
