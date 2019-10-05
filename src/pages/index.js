@@ -3,6 +3,7 @@ import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import usePosts from '../hooks/usePosts';
 import Posts from '../components/posts/Posts';
+import Insta from '../components/Insta';
 
 export default () => {
   const posts = usePosts();
@@ -18,6 +19,7 @@ export default () => {
       </p>
 
       <Posts posts={posts} />
+      <Insta />
     </Layout>
   );
 };
