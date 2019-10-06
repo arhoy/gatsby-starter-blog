@@ -1,8 +1,9 @@
-import React from 'react';
-import { navigateTo } from 'gatsby-link';
+import React, { useState } from 'react';
+import { navigate } from 'gatsby-link';
 import styled from '@emotion/styled';
 import Button from '../reusableStyles/buttons/Button';
 
+// Function to Make Netlify Submission and Gatsby Work
 function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -36,21 +37,32 @@ const Form = styled.form`
   border-bottom: 1rem solid ${props => props.theme.colors.primaryDark};
 `;
 
-const handleSubmit = e => {
-  e.preventDefault();
-  console.log('form was submitted!');
-  const form = e.target;
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({
-      'form-name': form.getAttribute('name'),
-    }),
-  })
-    .then(() => navigateTo(form.getAttribute('action')))
-    .catch(error => alert(error));
-};
 const SimpleNetlifyForm = () => {
+  const [formData, setFormData] = useState({});
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(
+      'form was submitted!',
+      formData.name,
+      formData.email,
+      formData.message,
+    );
+    const form = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...formData,
+      }),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch(error => alert(error));
+  };
+
+  const handleChange = e => {
+    setFormData({ [e.target.name]: e.target.value });
+  };
   return (
     <Form
       name="contact"
@@ -62,13 +74,15 @@ const SimpleNetlifyForm = () => {
     >
       <Field className="hidden">
         <Label className="hidden">
-          Hidden Honey Bot Spam Field: <input name="bot-field" />
+          Hidden Honey Bot Spam Field:{' '}
+          <input onChange={handleChange} name="bot-field" />
         </Label>
       </Field>
       <Field>
         <Label>
           Your Name:
           <input
+            onChange={handleChange}
             placeholder="What is your given name"
             type="text"
             name="name"
@@ -80,6 +94,7 @@ const SimpleNetlifyForm = () => {
         <Label>
           Your Email:
           <input
+            onChange={handleChange}
             placeholder="What is your email"
             type="email"
             name="email"
@@ -92,6 +107,7 @@ const SimpleNetlifyForm = () => {
         <Label>
           Message:
           <textarea
+            onChange={handleChange}
             placeholder="Please enter a brief message"
             name="message"
             required
