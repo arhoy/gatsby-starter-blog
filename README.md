@@ -1,6 +1,6 @@
 ## ALEX QUASAR BLOG
 
-- A potential Gatsby Blog Starter somewhat opinionated to my liking.
+- No Fuss commen sense starter blog.
 
 ## SPECS
 
