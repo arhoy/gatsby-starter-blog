@@ -8,10 +8,11 @@
 - Trying out Emotion CSS in JS. (themeing in Layout.js)
 - MDX
 - Image optimization via GraphQL
+- Authentication using Netlify Identity Widget (https://www.npmjs.com/package/netlify-identity-widget)
+- Forms using Netlify Forms
 
 ## TO DOS
 
-- Authentication on Blog using Auth0
 - Connecting to Contentful
 - Connecting basic payments via Stripe
 - Implement Kofi on site

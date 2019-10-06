@@ -36,7 +36,7 @@ const SimpleNetlifyForm = () => {
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      action="/thank-you"
+      action={`${process.env.BASE_URL}/thank-you`}
     >
       <Field className="hidden">
         <Label className="hidden">
@@ -45,7 +45,7 @@ const SimpleNetlifyForm = () => {
       </Field>
       <Field>
         <Label>
-          Your Name:{' '}
+          Your Name:
           <input
             placeholder="What is your given name"
             type="text"
@@ -55,14 +55,14 @@ const SimpleNetlifyForm = () => {
       </Field>
       <Field>
         <Label>
-          Your Email:{' '}
+          Your Email:
           <input placeholder="What is your email" type="email" name="email" />
         </Label>
       </Field>
 
       <Field>
         <Label>
-          Message:{' '}
+          Message:
           <textarea
             placeholder="Please enter a brief message"
             name="message"
