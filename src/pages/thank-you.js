@@ -10,7 +10,7 @@ const ThankyouStyled = styled.div`
   }
 `;
 
-const thankyou = () => {
+const Thankyou = () => {
   return (
     <Layout>
       <ThankyouStyled>
@@ -23,4 +23,4 @@ const thankyou = () => {
   );
 };
 
-export default thankyou;
+export default Thankyou;
