@@ -1,6 +1,13 @@
 import React from 'react';
+import { navigateTo } from 'gatsby-link';
 import styled from '@emotion/styled';
 import Button from '../reusableStyles/buttons/Button';
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+}
 
 const Field = styled.p`
   & .hidden {
@@ -29,6 +36,20 @@ const Form = styled.form`
   border-bottom: 1rem solid ${props => props.theme.colors.primaryDark};
 `;
 
+const handleSubmit = e => {
+  e.preventDefault();
+  console.log('form was submitted!');
+  const form = e.target;
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({
+      'form-name': form.getAttribute('name'),
+    }),
+  })
+    .then(() => navigateTo(form.getAttribute('action')))
+    .catch(error => alert(error));
+};
 const SimpleNetlifyForm = () => {
   return (
     <Form
@@ -36,7 +57,8 @@ const SimpleNetlifyForm = () => {
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      //   action="https://aquasar-starter-blog.netlify.com/thank-you/"
+      action="/thank-you/"
+      onSubmit={handleSubmit}
     >
       <Field className="hidden">
         <Label className="hidden">
