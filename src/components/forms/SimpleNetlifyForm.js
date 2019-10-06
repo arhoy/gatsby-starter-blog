@@ -1,47 +1,78 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import Button from '../reusableStyles/buttons/Button';
+
+const Field = styled.p`
+  & .hidden {
+    display: none;
+  }
+  margin-bottom: 2rem;
+`;
+
+const Label = styled.label`
+  padding: 1rem;
+  display: block;
+  outline: none;
+  & input,
+  textarea {
+    padding: 0.5rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid ${props => props.theme.colors.primaryDark};
+    font-family: Poppins, Roboto;
+    font-size: 1.6rem;
+  }
+`;
+
+const Form = styled.form`
+  border-bottom: 1rem solid ${props => props.theme.colors.primaryDark};
+`;
 
 const SimpleNetlifyForm = () => {
   return (
-    <form
+    <Form
       name="contact"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
       action="/thank-you"
     >
-      <p class="hidden">
-        <label>
+      <Field className="hidden">
+        <Label className="hidden">
           Don’t fill this out if you're human: <input name="bot-field" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Your Name: <input type="text" name="name" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Your Email: <input type="email" name="email" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Your Role:{' '}
-          <select name="role[]" multiple>
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select>
-        </label>
-      </p>
-      <p>
-        <label>
-          Message: <textarea name="message"></textarea>
-        </label>
-      </p>
-      <p>
-        <button type="submit">Send</button>
-      </p>
-    </form>
+        </Label>
+      </Field>
+      <Field>
+        <Label>
+          Your Name:{' '}
+          <input
+            placeholder="What is your given name"
+            type="text"
+            name="name"
+          />
+        </Label>
+      </Field>
+      <Field>
+        <Label>
+          Your Email:{' '}
+          <input placeholder="What is your email" type="email" name="email" />
+        </Label>
+      </Field>
+
+      <Field>
+        <Label>
+          Message:{' '}
+          <textarea
+            placeholder="Please enter a brief message"
+            name="message"
+          ></textarea>
+        </Label>
+      </Field>
+      <Field>
+        <Button type="submit">Send</Button>
+      </Field>
+    </Form>
   );
 };
 

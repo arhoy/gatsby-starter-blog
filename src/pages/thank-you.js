@@ -4,7 +4,7 @@ import SEO from '../hooks/SEO';
 import Hero from '../components/heros/Hero';
 import styled from '@emotion/styled';
 
-const thankyouStyled = styled.div`
+const ThankyouStyled = styled.div`
   p {
     margin-top: 1rem;
   }
@@ -13,12 +13,12 @@ const thankyouStyled = styled.div`
 const thankyou = () => {
   return (
     <Layout>
-      <thankyouStyled>
+      <ThankyouStyled>
         <SEO title="Thank you form" description="This is the thank you page." />
         <h1>Your form submission was recieved. Thank you!</h1>
 
         <Hero />
-      </thankyouStyled>
+      </ThankyouStyled>
     </Layout>
   );
 };
