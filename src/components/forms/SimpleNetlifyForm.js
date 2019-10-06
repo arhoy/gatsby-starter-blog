@@ -40,7 +40,7 @@ const SimpleNetlifyForm = () => {
     >
       <Field className="hidden">
         <Label className="hidden">
-          Don’t fill this out if you're human: <input name="bot-field" />
+          Hidden Honey Bot Spam Field: <input name="bot-field" />
         </Label>
       </Field>
       <Field>
