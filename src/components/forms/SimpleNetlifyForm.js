@@ -38,31 +38,35 @@ const Form = styled.form`
 `;
 
 const SimpleNetlifyForm = () => {
-  const [formData, setFormData] = useState({});
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(
-      'form was submitted!',
-      formData.name,
-      formData.email,
-      formData.message,
-    );
+    const userData = {
+      name,
+      email,
+      message,
+    };
+
+    console.log('form was submitted!', userData);
+
     const form = e.target;
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
-        ...formData,
+        name: userData.name,
+        email: userData.email,
+        message: userData.message,
       }),
     })
       .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error));
   };
 
-  const handleChange = e => {
-    setFormData({ [e.target.name]: e.target.value });
-  };
   return (
     <Form
       name="contact"
@@ -74,15 +78,14 @@ const SimpleNetlifyForm = () => {
     >
       <Field className="hidden">
         <Label className="hidden">
-          Hidden Honey Bot Spam Field:{' '}
-          <input onChange={handleChange} name="bot-field" />
+          Hidden Honey Bot Spam Field: <input name="bot-field" />
         </Label>
       </Field>
       <Field>
         <Label>
           Your Name:
           <input
-            onChange={handleChange}
+            onChange={event => setName(event.target.value)}
             placeholder="What is your given name"
             type="text"
             name="name"
@@ -94,7 +97,7 @@ const SimpleNetlifyForm = () => {
         <Label>
           Your Email:
           <input
-            onChange={handleChange}
+            onChange={event => setEmail(event.target.value)}
             placeholder="What is your email"
             type="email"
             name="email"
@@ -107,7 +110,7 @@ const SimpleNetlifyForm = () => {
         <Label>
           Message:
           <textarea
-            onChange={handleChange}
+            onChange={event => setMessage(event.target.value)}
             placeholder="Please enter a brief message"
             name="message"
             required
