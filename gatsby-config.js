@@ -2,7 +2,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const URL = 'https://www.pexels.com';
+const URL = 'https://aquasar-starter-blog.netlify.com';
 
 module.exports = {
   siteMetadata: {
@@ -27,8 +27,13 @@ module.exports = {
       options: {
         fonts: [
           {
+            family: `Poppins`,
+          },
+          {
+            family: `Roboto`,
+          },
+          {
             family: `Mansalva`,
-            subsets: [`latin`],
           },
         ],
       },

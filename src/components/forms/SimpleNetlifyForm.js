@@ -30,13 +30,19 @@ const Form = styled.form`
 `;
 
 const SimpleNetlifyForm = () => {
+  console.log('process', process.env.NODE_ENV);
+  const thankyouURL =
+    process.env.NODE_ENV === 'development'
+      ? '/thank-you'
+      : 'https://aquasar-starter-blog.netlify.com/thank-you/';
+
   return (
     <Form
       name="contact"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      action={process.env.THANK_YOU_URL}
+      action={thankyouURL}
     >
       <Field className="hidden">
         <Label className="hidden">
