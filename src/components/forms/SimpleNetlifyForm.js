@@ -36,7 +36,7 @@ const SimpleNetlifyForm = () => {
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      action={`${process.env.BASE_URL}/thank-you`}
+      action={process.env.THANK_YOU_URL}
     >
       <Field className="hidden">
         <Label className="hidden">
