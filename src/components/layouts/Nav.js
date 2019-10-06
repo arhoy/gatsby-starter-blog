@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
+import { FaBeer } from 'react-icons/fa';
+import links from '../../constants/navLinks';
 
 const Navlink = styled(Link)`
   color: ${props => props.theme.colors.primary};
@@ -56,28 +58,56 @@ const Logo = styled.span`
   }
 `;
 
+const NavContainer = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.hideNav {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    flex-direction: row;
+    margin-top: 4rem;
+    position: absolute;
+  }
+  &.hideMe {
+    display: none;
+  }
+`;
+
+const BurgerIcon = styled(FaBeer)`
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 4px;
+  color: ${props => props.theme.colors.primaryDark};
+  @media (min-width: 600px) {
+    margin: 0;
+  }
+`;
+
 const Nav = () => {
   useEffect(() => {
     netlifyIdentity.init();
   }, []);
+  const [isOpen, setIsOpen] = useState(true);
+  const burgerIconHandler = () => {
+    setIsOpen(prevIsOpen => !prevIsOpen);
+  };
   return (
     <Header>
       <Logo>
         Aquasar <i>Blog</i>
       </Logo>
-      <nav>
-        <Navlink activeClassName="currentPage" to="/">
-          Home
-        </Navlink>
-        <Navlink activeClassName="currentPage" to="/about">
-          About
-        </Navlink>
-        <Navlink activeClassName="currentPage" to="/contact">
-          Contact
-        </Navlink>
 
+      <NavContainer className={isOpen ? '' : 'hideMe'}>
+        {links.map(link => (
+          <Navlink key={link.path} activeClassName="currentPage" to={link.path}>
+            {link.text}
+          </Navlink>
+        ))}
         <NetlifyID data-netlify-identity-button></NetlifyID>
-      </nav>
+      </NavContainer>
+      <BurgerIcon onClick={burgerIconHandler} />
     </Header>
   );
 };
