@@ -36,7 +36,7 @@ const SimpleNetlifyForm = () => {
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      action="/thank-you/"
+      action="https://aquasar-starter-blog.netlify.com/thank-you/"
     >
       <Field className="hidden">
         <Label className="hidden">
