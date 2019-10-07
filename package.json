@@ -41,6 +41,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
+    "react-syntax-highlighter": "^11.0.2",
     "theme-ui": "^0.2.43"
   },
   "devDependencies": {

@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import styled from '@emotion/styled';
 import SEO from '../hooks/SEO';
+import ArticleCode from '../components/articles/ArticleCode';
 
 // run template query
 export const query = graphql`
@@ -39,10 +40,15 @@ const ArticleContainer = styled.article`
   max-width: 75rem;
   margin: 0 auto;
   & li {
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
+
   ul {
     list-style: disk;
+  }
+
+  h4 {
+    font-family: Mansalva;
   }
 `;
 
@@ -55,9 +61,12 @@ const TagContainer = styled.div`
 `;
 
 const Tag = styled.span`
+  display: inline-block;
   padding: 0.5rem 1.5rem;
   background: ${props => props.theme.colors.primaryLight};
   margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
 `;
 
 const BoldStyle = styled.span`
@@ -73,23 +82,6 @@ const Text = ({ children }) => <P>{children}</P>;
 
 const Code = ({ children }) => <CodeStyle>{children}</CodeStyle>;
 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-    [MARKS.CODE]: text => (
-      <Code>
-        {/* {' '}
-        <FullArticleCode language={language} code={text} />{' '} */}
-        I am some code here
-      </Code>
-    ),
-  },
-
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-  },
-};
-
 const BlogTemplate = ({ data: { article } }) => {
   console.log('JSON IS', article.bodyRichText.json);
   const {
@@ -99,6 +91,31 @@ const BlogTemplate = ({ data: { article } }) => {
     author,
     tags,
   } = article;
+
+  // determine which prism to render based on tags
+  let language = 'sql';
+
+  if (tags.includes('javascript')) {
+    language = 'javascript';
+  }
+  if (tags.includes('python')) {
+    language = 'python';
+  }
+
+  const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+      [MARKS.CODE]: text => (
+        <Code>
+          <ArticleCode language={language} code={text} />
+        </Code>
+      ),
+    },
+
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    },
+  };
 
   return (
     <Layout>
