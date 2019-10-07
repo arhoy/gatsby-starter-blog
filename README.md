@@ -1,6 +1,6 @@
 ## ALEX QUASAR BLOG
 
-- No Fuss commen sense starter blog.
+- No Fuss common sense starter blog.
 
 ## SPECS
 
@@ -10,9 +10,9 @@
 - Image optimization via GraphQL
 - Authentication using Netlify Identity Widget (https://www.npmjs.com/package/netlify-identity-widget)
 - Forms using Netlify Forms
+- Connecting to Contentful
 
 ## TO DOS
 
-- Connecting to Contentful
 - Connecting basic payments via Stripe
 - Implement Kofi on site

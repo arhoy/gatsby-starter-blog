@@ -1,26 +1,42 @@
-exports.createPages = async ({ actions, graphql, reporter }) => {
-  const result = await graphql(`
+const path = require('path');
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions;
+  const { data } = await graphql(`
     query {
-      allMdx {
+      blogArticles: allContentfulBlogPost {
         nodes {
-          frontmatter {
-            slug
-          }
+          slug
         }
       }
     }
   `);
-  if (result.errors) {
-    reporter.panic('failed to create posts', result.errors);
-  }
-  const posts = result.data.allMdx.nodes;
-  posts.forEach(post => {
-    actions.createPage({
-      path: post.frontmatter.slug,
-      component: require.resolve('./src/templates/post.js'),
+
+  // standard blog article template
+  data.blogArticles.nodes.forEach(article => {
+    createPage({
+      path: `articles/${article.slug}`,
+      component: path.resolve('./src/templates/Article.js'),
       context: {
-        slug: `${post.frontmatter.slug}`,
+        slug: article.slug,
       },
     });
   });
+
+  // blog template w/ pagination
+  // const posts = data.posts.nodes;
+  // const postsPerPage = 3;
+  // const numPages = Math.ceil(posts.length / postsPerPage);
+
+  // Array.from({ length: numPages }).forEach((_, i) => {
+  //   createPage({
+  //     path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
+  //     component: path.resolve('./src/templates/BlogListTemplate.js'),
+  //     context: {
+  //       limit: postsPerPage,
+  //       skip: i * postsPerPage,
+  //       numPages,
+  //       currentPage: i + 1,
+  //     },
+  //   });
+  // });
 };

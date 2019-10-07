@@ -39,27 +39,19 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: `gatsby-source-contentful`,
       options: {
-        defaultLayouts: {
-          default: require.resolve('./src/components/layouts/Layout.js'),
-        },
-        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
-        plugins: [{ resolve: 'gatsby-remark-images' }],
+        spaceId: process.env.CONTENTFUL_ID,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `posts`,
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `images`,
+        path: `${__dirname}/images/`,
       },
     },
     `gatsby-plugin-sharp`,

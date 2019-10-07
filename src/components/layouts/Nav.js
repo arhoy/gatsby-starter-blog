@@ -44,6 +44,7 @@ const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem 2.5rem;
   border-bottom-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -67,7 +68,7 @@ const NavContainer = styled.nav`
   }
   @media (max-width: 600px) {
     flex-direction: row;
-    margin-top: 4rem;
+    margin-top: 5rem;
     position: absolute;
   }
   &.hideMe {
@@ -78,7 +79,6 @@ const NavContainer = styled.nav`
 const BurgerIcon = styled(FaBeer)`
   cursor: pointer;
   font-size: 25px;
-  margin-top: 4px;
   color: ${props => props.theme.colors.primaryDark};
   @media (min-width: 600px) {
     margin: 0;
@@ -96,7 +96,9 @@ const Nav = () => {
   return (
     <Header>
       <Logo>
-        Aquasar <i>Blog</i>
+        <Navlink to="/">
+          <i>A</i>quasar
+        </Navlink>
       </Logo>
 
       <NavContainer className={isOpen ? '' : 'hideMe'}>

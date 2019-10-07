@@ -1,11 +1,11 @@
 export default [
   {
-    path: '/',
-    text: 'Home',
-  },
-  {
     path: '/about',
     text: 'About',
+  },
+  {
+    path: '/articles',
+    text: 'Articles',
   },
   {
     path: '/contact',
