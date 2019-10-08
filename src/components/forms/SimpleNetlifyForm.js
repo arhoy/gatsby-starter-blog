@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { navigate } from 'gatsby-link';
 import styled from '@emotion/styled';
-import Button from '../reusableStyles/buttons/Button';
+import { ButtonStyle1 } from '../reusableStyles/buttons/Button';
 
 // Function to Make Netlify Submission and Gatsby Work
 function encode(data) {
@@ -120,7 +120,7 @@ const SimpleNetlifyForm = () => {
         </Label>
       </Field>
       <Field>
-        <Button type="submit">Send</Button>
+        <ButtonStyle1 type="submit">Send</ButtonStyle1>
       </Field>
     </Form>
   );

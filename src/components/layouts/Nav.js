@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
-import { FaBeer } from 'react-icons/fa';
+import { FaBeer, FaAlignRight } from 'react-icons/fa';
 import links from '../../constants/navLinks';
 
 const Navlink = styled(Link)`
@@ -48,11 +48,16 @@ const Header = styled.header`
   padding: 2rem 2.5rem;
   border-bottom-left-radius: 25px;
   border-top-right-radius: 25px;
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const Logo = styled.span`
   color: ${props => props.theme.colors.primary};
-  font-size: 2.2rem;
+
   & i {
     font-weight: bold;
     color: ${props => props.theme.colors.primaryDark};
@@ -78,7 +83,7 @@ const NavContainer = styled.nav`
 
 const BurgerIcon = styled(FaBeer)`
   cursor: pointer;
-  font-size: 25px;
+  font-size: 20px;
   color: ${props => props.theme.colors.primaryDark};
   @media (min-width: 600px) {
     margin: 0;
@@ -108,8 +113,16 @@ const Nav = () => {
           </Navlink>
         ))}
         <NetlifyID data-netlify-identity-button></NetlifyID>
+        <a
+          href="https://ko-fi.com/alexquasar"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Buy me a Kofi-Beer!"
+        >
+          <BurgerIcon />
+        </a>
       </NavContainer>
-      <BurgerIcon onClick={burgerIconHandler} />
+      <FaAlignRight onClick={burgerIconHandler} />
     </Header>
   );
 };

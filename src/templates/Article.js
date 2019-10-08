@@ -6,6 +6,7 @@ import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import styled from '@emotion/styled';
 import SEO from '../hooks/SEO';
 import ArticleCode from '../components/articles/ArticleCode';
+import StyledHero from '../components/heros/StyledHero';
 
 // run template query
 export const query = graphql`
@@ -24,6 +25,7 @@ export const query = graphql`
       }
       heroImage {
         fluid {
+          src
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -34,6 +36,9 @@ export const query = graphql`
 
 const AritlceHeader = styled.div`
   margin-bottom: 6rem;
+  h1 {
+    font-size: 4rem;
+  }
 `;
 
 const ArticleContainer = styled.article`
@@ -89,6 +94,7 @@ const BlogTemplate = ({ data: { article } }) => {
     bodyRichText: { json },
     publishDate,
     author,
+    heroImage: { fluid },
     tags,
   } = article;
 
@@ -102,6 +108,7 @@ const BlogTemplate = ({ data: { article } }) => {
     language = 'python';
   }
 
+  console.log(fluid);
   const options = {
     renderMark: {
       [MARKS.BOLD]: text => <Bold>{text}</Bold>,
@@ -126,6 +133,7 @@ const BlogTemplate = ({ data: { article } }) => {
           <h1>{title}</h1>
           <p>{publishDate}</p>
           <p>{author.name}</p>
+          <StyledHero img={fluid} />
           <TagContainer>
             {tags.map(tag => (
               <Tag>{tag}</Tag>

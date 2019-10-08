@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Insta from '../components/Insta';
+import Checkout from '../components/stripe/Checkout';
+import Skus from '../components/stripe/Skus';
 
 export default () => {
   return (
@@ -30,6 +32,8 @@ export default () => {
 
       <h2>VS Code Set Up</h2>
 
+      <Checkout />
+      <Skus />
       <Insta />
     </Layout>
   );
