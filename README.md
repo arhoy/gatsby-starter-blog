@@ -9,10 +9,15 @@
 - MDX
 - Image optimization via GraphQL
 - Authentication using Netlify Identity Widget (https://www.npmjs.com/package/netlify-identity-widget)
-- Forms using Netlify Forms
+- Forms using Netlify Forms with custom thank-you page
 - Connecting to Contentful
+- Connecting basic payments via Stripe (one time and subscription payments)
+- Implement Kofi on site
 
 ## TO DOS
 
-- Connecting basic payments via Stripe
-- Implement Kofi on site
+- Creating drop down header component
+- Creating several different header components for samples users can use
+- Add in contentful hook
+- Add in stripe hook
+- Integrating Gatsby with a node express backend

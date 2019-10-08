@@ -68,8 +68,15 @@ module.exports = {
     {
       resolve: `gatsby-source-stripe`,
       options: {
-        objects: ['Sku'],
-        secretKey: process.env.STRIPE_SECRET_KEY,
+        objects: [
+          'Balance',
+          'BalanceTransaction',
+          'Product',
+          'ApplicationFee',
+          'Sku',
+          'Subscription',
+        ],
+        secretKey: 'stripe_secret_key_here',
         downloadFiles: true,
       },
     },
