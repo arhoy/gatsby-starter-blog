@@ -1,3 +1,5 @@
+// Article Code for each full article in the templates folder
+
 import React, { Component, Fragment } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 //  uncomment out to get dark styles import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
