@@ -76,7 +76,7 @@ module.exports = {
           'Sku',
           'Subscription',
         ],
-        secretKey: 'stripe_secret_key_here',
+        secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
       },
     },

@@ -1,3 +1,4 @@
+// Each Article in the Article List component
 import React from 'react';
 import styled from '@emotion/styled';
 import NoStyleLink from '../Links/NoStyleLink';
