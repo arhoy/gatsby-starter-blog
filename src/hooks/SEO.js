@@ -27,7 +27,7 @@ const SEO = ({ title, description }) => {
     image,
     twitterUsername,
   } = site.siteMetadata;
-  console.log(`${siteUrl}${image}`);
+
   return (
     <Helmet title={`${title} | ${siteTitle}`} htmlAttributes={{ lang: 'en' }}>
       <meta name="description" content={description || siteDescription} />

@@ -6,7 +6,7 @@ import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import styled from '@emotion/styled';
 import SEO from '../hooks/SEO';
 import ArticleCode from '../components/articles/ArticleCode';
-import StyledHero from '../components/heros/StyledHero';
+import Image from 'gatsby-image';
 
 // run template query
 export const query = graphql`
@@ -25,7 +25,6 @@ export const query = graphql`
       }
       heroImage {
         fluid {
-          src
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -35,9 +34,27 @@ export const query = graphql`
 `;
 
 const AritlceHeader = styled.div`
-  margin-bottom: 6rem;
-  h1 {
-    font-size: 4rem;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+`;
+
+const ArticleHeaderImage = styled(Image)`
+  width: 12rem;
+  height: 12rem;
+  background-size: contain;
+  margin-right: 1rem;
+  justify-self: center;
+  align-self: center;
+  @media (max-width: 750px) {
+    display: none;
+  }
+`;
+
+const ArticleHeaderContent = styled.div`
+  padding: 1rem;
+  & p {
+    font-size: 1.3rem;
   }
 `;
 
@@ -68,9 +85,10 @@ const TagContainer = styled.div`
 const Tag = styled.span`
   display: inline-block;
   padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
   background: ${props => props.theme.colors.primaryLight};
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
   border-radius: 4px;
 `;
 
@@ -78,8 +96,13 @@ const BoldStyle = styled.span`
   font-weight: bold;
 `;
 
-const CodeStyle = styled.span`
-  color: red;
+const CodeStyle = styled.span``;
+
+const Title = styled.h1`
+  font-family: Poppins;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  margin-bottom: 1.4rem;
 `;
 
 const Bold = ({ children }) => <BoldStyle>{children}</BoldStyle>;
@@ -87,8 +110,7 @@ const Text = ({ children }) => <P>{children}</P>;
 
 const Code = ({ children }) => <CodeStyle>{children}</CodeStyle>;
 
-const BlogTemplate = ({ data: { article } }) => {
-  console.log('JSON IS', article.bodyRichText.json);
+const AricleTemplate = ({ data: { article } }) => {
   const {
     title,
     bodyRichText: { json },
@@ -130,15 +152,19 @@ const BlogTemplate = ({ data: { article } }) => {
 
       <ArticleContainer>
         <AritlceHeader>
-          <h1>{title}</h1>
-          <p>{publishDate}</p>
-          <p>{author.name}</p>
-          <StyledHero img={fluid} />
-          <TagContainer>
-            {tags.map(tag => (
-              <Tag>{tag}</Tag>
-            ))}
-          </TagContainer>
+          <ArticleHeaderImage fluid={fluid} />
+
+          <ArticleHeaderContent>
+            <Title>{title}</Title>
+            <p>{publishDate}</p>
+            <p>{author.name}</p>
+
+            <TagContainer>
+              {tags.map(tag => (
+                <Tag>{tag}</Tag>
+              ))}
+            </TagContainer>
+          </ArticleHeaderContent>
         </AritlceHeader>
         <main>{documentToReactComponents(json, options)}</main>
       </ArticleContainer>
@@ -146,4 +172,4 @@ const BlogTemplate = ({ data: { article } }) => {
   );
 };
 
-export default BlogTemplate;
+export default AricleTemplate;

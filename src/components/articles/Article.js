@@ -41,7 +41,6 @@ const ImageContainer = styled(Image)`
 `;
 
 const Article = ({ article }) => {
-  console.log('Article is ', article);
   return (
     <Div>
       <StyledLink to={`articles/${article.slug}`}>

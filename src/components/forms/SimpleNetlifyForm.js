@@ -50,8 +50,6 @@ const SimpleNetlifyForm = () => {
       message,
     };
 
-    console.log('form was submitted!', userData);
-
     const form = e.target;
     fetch('/', {
       method: 'POST',

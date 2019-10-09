@@ -88,7 +88,6 @@ const Text = ({ children }) => <P>{children}</P>;
 const Code = ({ children }) => <CodeStyle>{children}</CodeStyle>;
 
 const BlogTemplate = ({ data: { article } }) => {
-  console.log('JSON IS', article.bodyRichText.json);
   const {
     title,
     bodyRichText: { json },
@@ -108,7 +107,6 @@ const BlogTemplate = ({ data: { article } }) => {
     language = 'python';
   }
 
-  console.log(fluid);
   const options = {
     renderMark: {
       [MARKS.BOLD]: text => <Bold>{text}</Bold>,

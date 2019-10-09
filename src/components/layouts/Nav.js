@@ -10,6 +10,7 @@ import Navlink from '../Links/Navlink';
 const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   padding: 2rem 2.5rem;
@@ -19,6 +20,12 @@ const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  @media (max-width: 600px) {
+    height: 25rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
   }
 `;
 
@@ -35,6 +42,7 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+
   &.hideNav {
     display: none;
   }
