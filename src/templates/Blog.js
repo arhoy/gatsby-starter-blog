@@ -134,7 +134,7 @@ const BlogTemplate = ({ data: { article } }) => {
           <StyledHero img={fluid} />
           <TagContainer>
             {tags.map(tag => (
-              <Tag>{tag}</Tag>
+              <Tag key={tag}>{tag}</Tag>
             ))}
           </TagContainer>
         </AritlceHeader>

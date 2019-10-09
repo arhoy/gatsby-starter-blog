@@ -29,15 +29,21 @@ const Div = styled.div`
 const StyledLink = styled(NoStyleLink)`
   display: flex;
   align-items: center;
+  justify-items: center;
   padding: 1rem 1rem;
 `;
 
 const ImageContainer = styled(Image)`
-  width: 6rem;
-  height: 6rem;
+  min-width: 6rem;
+  min-height: 6rem;
   margin-right: 1rem;
   border-radius: 50%;
-  background-size: contain;
+  background-size: cover;
+`;
+
+const Title = styled.h2`
+  display: flex;
+  justify-self: flex-start;
 `;
 
 const Article = ({ article }) => {
@@ -45,7 +51,7 @@ const Article = ({ article }) => {
     <Div>
       <StyledLink to={`articles/${article.slug}`}>
         <ImageContainer fluid={article.heroImage.fluid} alt={article.title} />
-        <h2>{article.title}</h2>
+        <Title>{article.title}</Title>
       </StyledLink>
     </Div>
   );

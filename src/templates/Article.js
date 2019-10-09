@@ -161,7 +161,7 @@ const AricleTemplate = ({ data: { article } }) => {
 
             <TagContainer>
               {tags.map(tag => (
-                <Tag>{tag}</Tag>
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </TagContainer>
           </ArticleHeaderContent>
