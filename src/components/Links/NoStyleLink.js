@@ -4,9 +4,6 @@ import { Link } from 'gatsby';
 const NoStyleLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.colors.black};
-  &:visited {
-    color: ${props => props.theme.colors.darkgrey};
-  }
 `;
 
 export default NoStyleLink;

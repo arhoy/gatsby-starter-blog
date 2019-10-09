@@ -5,12 +5,12 @@ import NoStyleLink from '../Links/NoStyleLink';
 import Image from 'gatsby-image';
 
 const Div = styled.div`
-  border-left: 4px solid ${props => props.theme.colors.black};
   margin: 2rem 0rem;
-  padding: 3rem 2rem;
   max-width: 100rem;
+  margin: 1rem auto;
   & h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    font-weight: 400;
   }
   & p {
     padding: 1rem;
@@ -26,19 +26,28 @@ const Div = styled.div`
   }
 `;
 
+const StyledLink = styled(NoStyleLink)`
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem;
+`;
+
 const ImageContainer = styled(Image)`
-  width: 10rem;
+  width: 6rem;
+  height: 6rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  background-size: contain;
 `;
 
 const Article = ({ article }) => {
   console.log('Article is ', article);
   return (
     <Div>
-      <NoStyleLink to={`articles/${article.slug}`}>
-        <h2>{article.title}</h2>
-        <p className="author">By {article.author.name}</p>
+      <StyledLink to={`articles/${article.slug}`}>
         <ImageContainer fluid={article.heroImage.fluid} alt={article.title} />
-      </NoStyleLink>
+        <h2>{article.title}</h2>
+      </StyledLink>
     </Div>
   );
 };
