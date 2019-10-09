@@ -10,8 +10,8 @@ import StyledHero from '../components/heros/StyledHero';
 
 // run template query
 export const query = graphql`
-  query getFullArticle($slug: String!) {
-    article: contentfulAlexQuasarArticles(slug: { eq: $slug }) {
+  query getBlog($slug: String!) {
+    article: contentfulBlogPost(slug: { eq: $slug }) {
       title
       description {
         description
