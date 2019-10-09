@@ -5,7 +5,7 @@ import netlifyIdentity from 'netlify-identity-widget';
 import { FaBeer, FaAlignRight } from 'react-icons/fa';
 import links from '../../constants/navLinks';
 import DropDownMenu1 from '../Links/DropDownMenu1';
-import Navlink from '../Links/NavLink';
+import Navlink from '../Links/Navlink';
 
 const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
