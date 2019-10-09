@@ -29,7 +29,7 @@ const Div = styled.div`
 const StyledLink = styled(NoStyleLink)`
   display: flex;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
 `;
 
 const ImageContainer = styled(Image)`
